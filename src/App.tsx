@@ -1,25 +1,57 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Layout from './layouts/Layout';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import RegistrationPage from './pages/RegistrationPage';
+import ProfilePage from './pages/ProfilePage';
+import DictionaryPage from './pages/DictionaryPage';
+import TrainingPage from './pages/TrainingPage';
+import WordPage from './pages/WordPage';
+
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from './firebase';
 
 function App() {
+  const [user] = useAuthState(auth);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path='/' element={ <Layout/> }>
+        <Route path="/" element={ <HomePage /> } />
+
+        {!user
+          ?
+          <>
+            <Route path="/login" element={ <LoginPage /> } />
+            <Route path="/registration" element={ <RegistrationPage /> } />
+          </>
+          :
+          <>
+            <Route path="/login" element={ <Navigate to="/dictionary" replace /> } />
+            <Route path="/registration" element={ <Navigate to="/dictionary" replace /> } />
+          </>
+        }
+
+        {user
+          ?
+          <>
+            <Route path="/profile" element={ <ProfilePage /> } />
+            <Route path="/training" element={ <TrainingPage /> } />
+            <Route path="/dictionary" element={ <DictionaryPage /> } />
+            <Route path="/dictionary/:word" element={ <WordPage /> } />
+          </>
+          :
+          <>
+            {/* <Route path="/training" element={ <Navigate to="/" replace /> } />
+            <Route path="/dictionary" element={ <Navigate to="/" replace /> } />
+            <Route path="/dictionary/:word" element={ <Navigate to="/" replace /> } /> */}
+          </>
+        }
+
+        <Route path="*" element={ <Navigate to="/" replace /> } />
+      </Route>
+    </Routes>
   );
 }
 

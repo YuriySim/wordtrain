@@ -1,13 +1,87 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+
+/* -- HEADER -- */
+
+.header {
+  @apply flex justify-between items-center h-[60px] px-8 bg-gray-500 text-white shrink-0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.header-wrapper {
+  @apply flex items-center h-full relative;
 }
+
+.menu-link-logo {
+  @apply relative flex justify-center items-center h-full;
+}
+
+.menu-link {
+  @apply relative flex justify-center items-center h-full px-2 transition-all;
+}
+
+.menu-link:hover {
+  @apply text-rose-400;
+}
+
+.line {
+  @apply absolute left-0 bottom-0 w-full h-1 bg-red-400;
+  display: none;
+}
+
+.isActive > .line {
+  display: block;
+}
+
+.profile-circle {
+  @apply rounded-full h-[40px] w-[40px] bg-white flex justify-center items-center text-black font-serif text-lg cursor-pointer
+}
+
+/* -- FORM AUTHORISATION -- */
+
+.form {
+  @apply flex flex-col rounded-[12px] p-6 bg-white text-black w-full max-w-sm
+}
+
+.field-auth-wrap {
+  @apply mb-2 w-full;
+}
+
+.field-auth {
+  @apply border-b border-black mb-1 w-full;
+}
+
+.btn-auth {
+  @apply bg-black text-white rounded-[12px] w-full p-[8px] mt-4 cursor-pointer transition-all;
+}
+
+.btn-auth:hover {
+  @apply opacity-80 text-red-400;
+}
+
+.btn-auth:disabled {
+  @apply opacity-20 text-white;
+}
+
+.error-message {
+  @apply text-xs text-rose-500 h-[1rem]; 
+}
+
+/* -- DROPMENU -- */
+
+.dropmenu {
+  @apply absolute text-black px-4 py-2 w-[140px] bg-white rounded-[12px] right-0 top-[75px] flex flex-col;
+}
+
+.dropmenu-user-name {
+  @apply h-[40px] flex items-center w-full cursor-default;
+}
+
+.dropmenu-link {
+  @apply h-[40px] flex items-center w-full border-t border-slate-300 transition-all;
+}
+
+.dropmenu-link:hover {
+  @apply text-rose-400;
+}
+
+@tailwind utilities;

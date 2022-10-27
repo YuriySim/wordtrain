@@ -1,0 +1,199 @@
+.content {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.container video {
+  width: 100%;
+  max-width: 1000px;
+}
+
+
+/* -- Controls panel -- */
+.controls {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controlsPanel {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  gap: 24px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 60%);
+  transition: all 0.3s ease-in-out;
+}
+
+.controlsPanelLeft {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.controlsPanel:hover {
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+}
+
+
+/* -- Progress bar -- */
+.progressBar {
+  position: absolute;
+  left:16px;
+  right: 16px;
+  height: 2px;
+  top: -2px;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: stretch;
+}
+
+.progressBar input[type="range"] {
+  background-color: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  left:0px;
+  right: 0px;
+  height: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: linear-gradient(rgba(245, 6, 6, 0.6), rgba(245, 6, 6, 0.6));
+  background-size: 20% 100%;
+  background-repeat: no-repeat;
+}
+
+.progressBar input[type="range"]:active {
+  cursor: grabbing;
+}
+
+.progressBar input[type="range"]::-webkit-slider-thumb {
+  width: 6px;
+  -webkit-appearance: none;
+  height: 6px;
+  cursor: ew-resize;
+  background: rgba(245, 6, 6, 1);
+  box-shadow: -3px 0 0 3px rgba(245, 6, 6, 1);
+  border-radius: 50%;
+  cursor: pointer;
+  }
+
+
+.controlsPanel:hover .progressBar input[type="range"] {
+  background-image: linear-gradient(rgba(245, 6, 6, 1), rgba(245, 6, 6, 1));
+}
+
+.controlsPanel:hover .progressBar {
+  top: -5px;
+  height: 5px;
+}
+
+.controlsPanel:hover .progressBar input[type="range"] {
+  height: 5px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+
+/* -- Buttons -- */
+.play {
+  color: rgba(245, 6, 6, 0.6);
+  transition: all 0.3s ease-in-out;
+}
+
+.play:hover {
+  color: rgba(245, 6, 6, 1);
+}
+
+.playHide {
+  display: none;
+}
+
+.btnOff,
+.btnOn {
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.btnOff:hover,
+.btnOn:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+.btnOff .btnIconOn {
+  display: none;
+}
+
+.btnOn .btnIconOff {
+  display: none;
+}
+
+
+/* -- Volume -- */
+.volume {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.volume input[type="range"] {
+  -webkit-appearance: none;
+  margin-right: 15px;
+  width: 80px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  background-image: linear-gradient(#fff, #fff);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.volume:hover input[type="range"] {
+  opacity: 1;
+}
+
+.volume input[type=range]::-webkit-slider-thumb  {
+  width: 4px;
+  -webkit-appearance: none;
+  height: 4px;
+  cursor: ew-resize;
+  background: #FFF;
+  box-shadow: -3px 0 0 3px #FFF;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.volume input[type="range"]:active {
+  cursor: grabbing;
+}
