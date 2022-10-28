@@ -20,19 +20,6 @@ function App() {
       <Route path='/' element={ <Layout/> }>
         <Route path="/" element={ <HomePage /> } />
 
-        {!user
-          ?
-          <>
-            <Route path="/login" element={ <LoginPage /> } />
-            <Route path="/registration" element={ <RegistrationPage /> } />
-          </>
-          :
-          <>
-            <Route path="/login" element={ <Navigate to="/dictionary" replace /> } />
-            <Route path="/registration" element={ <Navigate to="/dictionary" replace /> } />
-          </>
-        }
-
         {user
           ?
           <>
@@ -40,12 +27,14 @@ function App() {
             <Route path="/training" element={ <TrainingPage /> } />
             <Route path="/dictionary" element={ <DictionaryPage /> } />
             <Route path="/dictionary/:word" element={ <WordPage /> } />
+
+            <Route path="/login" element={ <Navigate to="/dictionary" replace /> } />
+            <Route path="/registration" element={ <Navigate to="/dictionary" replace /> } />
           </>
           :
           <>
-            {/* <Route path="/training" element={ <Navigate to="/" replace /> } />
-            <Route path="/dictionary" element={ <Navigate to="/" replace /> } />
-            <Route path="/dictionary/:word" element={ <Navigate to="/" replace /> } /> */}
+            <Route path="/login" element={ <LoginPage /> } />
+            <Route path="/registration" element={ <RegistrationPage /> } />
           </>
         }
 
